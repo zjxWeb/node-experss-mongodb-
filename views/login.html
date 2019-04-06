@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>登陆</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/css/signin.css" rel="stylesheet">
+
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" id="login_form">
+        <img src="/public/img/2.jpg" alt=" " width="100px;" height="100px;">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="text4" class="form-control" placeholder="Email address" name="text4">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="text2" class="form-control" placeholder="Password"  name="text2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" > Remember me
+            <a href="/users/resgister"><span class="creat">创建一个账号吧!</span></a>
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $('#login_form').on('submit',function(e){
+            e.preventDefault()//读取默认事件
+            // .serialize()输出序列化表单值的结果
+            var formData = $(this).serialize()
+            $.ajax({
+                url:'/users/login',
+                type:'post',
+                data:formData,
+                dataType:'json',
+                success:function (data){
+                var err_code = data.err_code
+                if(err_code === 0){
+                   window.location.href = '/users'
+                }else if(err_code === 1){
+                  window.alert('邮箱或者密码错误')
+                }else if(err_code === 500){
+                  window.alert('服务器忙')
+                }
+              }
+            })
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>注册</title>
+    <link rel="stylesheet" href="/public/css/resgister.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- <script src="/public/js/resgister.js"></script> -->
+</head>
+<body id="i88" style="margin: 0">
+    <div class = "pg_header">
+        <a class = "logo">LOGO</a>
+        <a class="pg_dl" id="i77">注册</a>    
+    </div>
+    <!-- <form name="tijiao" method="post" onsubmit="return check()" action="winford.top" id="resgister_form"> -->
+    <form name="tijiao" method="post" id="resgister_form" class="r_form"> 
+        <h3 class="r_font">请注册</h3>
+        <div class="pg_body">
+                <div class="menu">用户名:</div>
+                    <div class="kong">
+                        <!-- <input id="text1" type="text" name="text1" placeholder="请输入用户名" onblur="check()"><span id="div1" class="tian" style="margin-top: 4px">*(为必填)<span> -->
+                         <input id="text1" type="text" name="text1" placeholder="请输入用户名" ><span id="div1" class="tian" style="margin-top: 4px">*(为必填)<span>
+                    </div>
+                <div class="menu">密码:</div>
+                    <div class="kong">
+                        <!-- <input id="text2" type="password" name="text2" onblur="check()"> -->
+                        <input id="text2" type="password" name="text2">
+                        <span id="div2" class="tian" style="margin-top: -25px">*(为必填)<span>
+                    </div>
+                <div class="menu">电话号码:</div>
+                    <div class="kong">
+                        <input id="i5" type="text" name="i5">
+                    </div>
+                <div class="menu">邮箱地址:</div>
+                    <div class="kong">
+                        <!-- <input id="text4" type="text" name="text4" onblur="check()"> -->
+                        <input id="text4" type="text" name="text4" > 
+                        <span id="div4" class="tian">*(为必填)<span>
+                    </div>
+        </div>
+        <div class="r_box">
+            <input type="submit" value="注册" id="sumin_init" name="">
+            <a href="/users"> <input type='button' value="取消" name=""></a>
+        </div>
+    </form>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        var text1 = document.getElementById('text1');
+        var text2 = document.getElementById('text2');
+        var i5 = document.getElementById('i5');
+        var text4  = document.getElementById('text4');
+        $('#resgister_form').on('submit',function(e){
+            e.preventDefault()//读取默认事件
+            // .serialize()输出序列化表单值的结果
+            var formData = $(this).serialize()
+            $.ajax({
+                url:'/users/resgister',
+                type:'post',
+                data:formData,
+                dataType:'json',
+                success:function (data){
+                var err_code = data.err_code
+                if(err_code === 0){
+                   if(text1 === ''&& text2===''&&i5==='' && text4 === ''){
+                       window.alert('请填写完整的信息')
+                   }
+                   else{
+                        //   window.alert("注册成功")
+                       //服务端重定向（跳转页面）在异步请求中，没有作用 
+                        // window.open('/students/login')
+                        window.location.href = "/users"
+                   }
+                } else if(err_code === 500){
+                    window.alert('服务器忙，')
+                }else{
+                    window.alert('邮箱或者昵称已经存在')
+                }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
