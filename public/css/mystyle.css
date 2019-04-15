@@ -1,0 +1,44 @@
+
+/* header */
+.main{
+    overflow: hidden;
+}
+.indexNav{
+    background: rgba(255, 51,51, 0.9);
+}
+.navbar-inverse .navbar-brand{
+    color: #ffffff;
+}
+.navbar-inverse .navbar-brand:hover{
+    color: #b3b3b3;
+}
+.button:hover{
+    color: #b3b3b3;
+}
+.navbar-form .form-control{
+    width: 15vw;
+    height: 25px;
+    margin-top: 4px;
+    border-radius: 20px;
+}
+/* 侧边栏 */
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active {
+    border-top-left-radius:15px;
+    border-bottom-left-radius: 15px; 
+    background: rgba(255, 51,51, 0.9);
+}
+
+.sidebar{
+    width: 227px;
+    background:linear-gradient(to bottom right, #8636b2 18%,#e74824 100%);
+}
+.nav-sidebar > li > a{
+    margin-top: 10px;
+    height:34px;
+    padding-left: 4vw;
+}
+.nav-sidebar > li{
+    width: 180px;
+    margin-left: 4vw;
+    
+}

@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>学生主页</title>
+    <title>我的主页</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -19,10 +19,10 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/mystyle.css">
 
     <!-- my are oneself css style -->
     <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="../views/build/template.js">
 
   </head>
 
@@ -34,49 +34,25 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li class="active"><a href="#index">我的生活 <span class="sr-only">(current)</span></a></li>
+            <li style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9);"><a style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9); color:azure;" href="#messade">我的生活</a></li>
+            <li style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9);"><a style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9); color:azure;" href="#">Analytics</a></li>
+            <li style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9);"><a style="border-top-left-radius:15px;border-bottom-left-radius: 15px; background: rgba(255, 51,51, 0.9); color:azure;" href="#">Export</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">优秀用户</h1>
-
-          <div class="row placeholders">
-            {{each fru}}
-              <div class="col-xs-6 col-sm-3 placeholder ric" >
-                <img src="{{$value.pic}}" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail" >
-                <h5>{{$value.txt1}}</h5>
-                <span class="text-muted txt">{{$value.txt2}}</span>
-              </div>
-            {{/each}}
-            
-          </div>
-
-          <h2 class="sub-header">调查对象</h2>
-          <a class="btn btn-success" href="/students/new">添加对象</a>
+        <div style="height:100vh; overflow: hidden;">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="index" >
+          <h2 class="sub-header"> 我的任务</h2>
+          <a class="btn btn-success" href="/students/new">添加任务</a>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>调查编号</th>
+                  <th>任务编号</th>
                   <th>姓名</th>
-                  <th>性别</th>
-                  <th>年龄</th>
-                  <th>爱好</th>
+                  <th>完成状态</th>
+                  <th>任务顺序</th>
+                  <th>事件</th>
                   <th>操作</th>
                 </tr>
               </thead>
@@ -87,9 +63,9 @@
                     <td>{{$value.name}}</td>
                     <td>
                       {{if $value.gender===0}}
-                        {{$value.gender = "男"}}
+                        {{$value.gender = "完成"}}
                         {{else if  $value.gender === 1}}
-                        {{$value.gender = "女"}}
+                        {{$value.gender = "未完成"}}
                       {{/if}}
                     </td>
                     <td>{{$value.age}}</td>
@@ -102,10 +78,31 @@
                 {{/each}}
               </tbody>
             </table>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="messade" style="margin-top:100vh; margin-left: 3vw;">
+                <div class="row placeholders">
+                    <h1 class="page-header">我的</h1>
+                  {{each fru}}
+                    <div class="col-xs-6 col-sm-3 placeholder ric" >
+                      
+                      
+                      <img src="{{$value.pic}}" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail" >
+                      <h5>{{$value.txt1}}</h5>
+                      <span class="text-muted txt">{{$value.txt2}}</span>
+                    </div>
+                  {{/each}}
+                  
+                </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  
+  </div>
+
+</div>
+   
     {{else}}
       <div class="box">
           <div class="site-wrapper">
@@ -116,19 +113,19 @@
         
                   <div class="masthead clearfix">
                     <div class="inner">
-                      <h3 class="masthead-brand">Cover</h3>
+                      <!-- <h3 class="masthead-brand">Cover</h3> -->
                       <nav>
                         <ul class="nav masthead-nav">
-                          <li class="active"><a href="#">Home</a></li>
+                          <!-- <li class="active"><a href="#">Home</a></li>
                           <li><a href="#">Features</a></li>
-                          <li><a href="#">Contact</a></li>
+                          <li><a href="#">Contact</a></li> -->
                         </ul>
                       </nav>
                     </div>
                   </div>
         
                   <div class="inner cover">
-                    <h1 class="cover-heading">Cover your page.</h1>
+                    <h1 class="cover-heading">个人评论系统</h1>
                     <p class="lead">我们主要专注于评价，对于评价我们一定是最权威与可信赖的，因为我采用的是大数据加人工调查的方式，屏蔽了传统的刷单好评，我们将顾客的利益最大化，顾客至上！</p>
                     <p class="lead">
                       <a href="/users/login" class="btn btn-lg btn-default">请登陆</a>

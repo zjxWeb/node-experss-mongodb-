@@ -1,5 +1,5 @@
 <!-- 公共的顶部 -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top indexNav">
       
         <div class="container-fluid">
           <div class="navbar-header">
@@ -9,17 +9,20 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/users">调查系统</a>
+           
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               {{if student}}
               {{else if  user}}
+              <a id='solid' class="navbar-brand" href="/users" style="position: fixed; left: 20px; ">{{user.text1}}</a>
               <li> 
+               
                 <ul class="float_ul">
-                    <li> <a class="btn btn-primary button" >登陆：{{user.text1}}</a></li>
-                    <li> <a class="btn btn-primary button"  href="/users/settting">设置</a></li>
-                    <li> <a class="btn btn-primary button" href="/users/login">退出</a></li>
+                    <li> <a class="btn btn button" >消息</a></li>
+                    <li> <a class="btn btn button"  href="/users/settting">设置</a></li>
+                    <li> <a class="btn btn button" href="/users/login">退出</a></li>
+                    <li> <a class="btn btn button" >个人中心</a></li>
                 </ul>
                 </li>
                 {{else}}

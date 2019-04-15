@@ -2,32 +2,32 @@
   {{extend './layout.html'}}
   {{block 'content'}}
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">调查对象</h1>
+          <!-- <h1 class="page-header">调查对象</h1> -->
 
 
-          <h2 class="sub-header">添加对象</h2>
+          <h2 class="sub-header">添加任务</h2>
             <form action="/students/new" method = "POST">
                 <div class="form-group">
                 <label for="">姓名</label>
                 <input type="text" name ="name" id="" class="form-control" id="exampleInputEmail1" placeholder="Email">
                 </div>
                 <div class="form-group">
-                <label for="">性别</label>
+                <label for="">完成状态</label>
                 <div>
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio1" value="0"> 男
+                    <input type="radio" name="gender" id="inlineRadio1" value="0"> 完成
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio2" value="1">女
+                    <input type="radio" name="gender" id="inlineRadio2" value="1">未完成
                   </label>
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="" >年龄</label>
+                <label for="" >任务顺序</label>
                 <input type="number" id="" name="age" class="form-control">
                 </div>
                 <div class="checkbox">
-                  <label for="">爱好</label>
+                  <label for="">事件</label>
                   <input type="text" name ="hobbies" id="" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>

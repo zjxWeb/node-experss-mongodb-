@@ -10,8 +10,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>添加学生</title>
-
+    <title>添加任务</title>
+ 
+     <!-- Custom styles for this template -->
+     <link rel="stylesheet" href="/public/css/main.css">
+     <link rel="stylesheet" href="/public/css/mystyle.css">
+ 
+     <!-- my are oneself css style -->
+     <link rel="stylesheet" href="/public/css/style.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -19,18 +25,49 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/mystyle.css">
 
   </head>
 
   <body>
 
-      {{include './header.html'}}
-      {{include './list.html'}}
+            <!-- 公共的顶部 -->
+      <nav class="navbar navbar-inverse navbar-fixed-top indexNav">
+            
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <a id='solid' class="navbar-brand" href="/users" style="position: fixed; left: 20px; "></a>
+              <li> 
+              
+                <ul class="float_ul">
+                    <li> <a class="btn btn button" >消息</a></li>
+                    <li> <a class="btn btn button"  href="/users/settting">设置</a></li>
+                    <li> <a class="btn btn button" href="/users/login">退出</a></li>
+                    <li> <a class="btn btn button" >个人中心</a></li>
+                </ul>
+                </li>
+            
+            </ul>
+            <form class="navbar-form navbar-right">
+              <input type="text" class="form-control" placeholder="Search...">
+            </form>
+          </div>
+        </div>
+      </nav>
 
       {{block  'content'}}
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">优秀用户</h1>
-          <h2 class="sub-header">添加学生</h2>
+          <h2 class="sub-header">添加任务</h2>
             <form action="/students/edit" method = "POST">
               <!-- 影藏域 --用来存放一些不希望用户看见，但是需要被提交到服务端的数据 -->
               <input type="hidden" id="" name="id" value="{{student._id}}">
@@ -39,22 +76,22 @@
                 <input type="text" name ="name" id="" class="form-control" value="{{ student.name }}">
                 </div>
                 <div class="form-group">
-                <label for="">性别</label>
+                <label for="">完成状态</label>
                 <div>
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio1" value="0"> 男
+                    <input type="radio" name="gender" id="inlineRadio1" value="0"> 完成
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="gender" id="inlineRadio2" value="1">女
+                    <input type="radio" name="gender" id="inlineRadio2" value="1">未完成
                   </label>
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="" >年龄</label>
+                <label for="" >任务顺序</label>
                 <input type="number" id="" name="age" class="form-control" value="{{ student.age }}">
                 </div>
                 <div class="checkbox">
-                  <label for="">爱好</label>
+                  <label for="">事件</label>
                   <input type="text" name ="hobbies" id="" class="form-control" value="{{ student.hobbies }}">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
