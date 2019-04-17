@@ -51,7 +51,7 @@
 
 .calendar{
     position: relative;
-    top: -58vh;
+    top: -15vh;
     left: 37vw;
     width: 350px;
     height: 200px;
@@ -144,4 +144,62 @@
     border-radius: 50%;
     background:rgba(255, 51,51, 0.9);
     
+}
+/* 圆饼图 */
+
+.loading .progress {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    background-color: white;
+    border-radius: 50%;
+    left: 1em;
+    top: 1em;
+    line-height: 6em;
+    text-align: center;
+}
+ 
+.left,
+.right {
+    width: 4em;
+    height: 8em;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    background-color: #999999
+}
+ 
+.left {
+    border-radius: 8em 0 0 8em;
+}
+ 
+.right {
+    border-radius: 0 8em 8em 0;
+}
+ 
+.left:after,
+.right:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 4em;
+    height: 8em;
+    background-color: white;
+    border-radius: 8em 0 0 8em;
+    background:rgba(255, 51,51, 0.9);
+}
+ 
+.right:after {
+    content: "";
+    position: absolute;
+    display: block;
+    border-radius: 0 8em 8em 0;
+}
+.left:after {
+    transform-origin: right center;
+}
+ 
+.right:after {
+    transform-origin: left center;
+    transform: rotateZ(80deg);
 }
